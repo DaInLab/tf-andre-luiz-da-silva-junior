@@ -159,9 +159,9 @@
 22/01/2021;feminino;77;18/01/2021;privado;hipertensão;22/01/2021;
 25/01/2021;feminino;79;04/01/2021;público;hipertensão;23/01/2021;
 25/01/2021;masculino;77;31/12/2020;público;cardiopatia;23/01/2021;
-25/01/2021;masculino;72;02/01/2021;privado;cardiopatia;23/01/1900;
-25/01/2021;masculino;82;09/01/2021;privado;diabetes e cardiopatia;23/01/1900;
-25/01/2021;masculino;65;29/12/2021;público;diabetes e hipertensão;24/01/2021;
+25/01/2021;masculino;72;02/01/2021;privado;cardiopatia;23/01/2021;
+25/01/2021;masculino;82;09/01/2021;privado;diabetes e cardiopatia;23/01/2021;
+25/01/2021;masculino;65;29/12/2020;público;diabetes e hipertensão;24/01/2021;
 26/01/2021;feminino;70;31/12/2020;privado;cardiopatia e obesidade;24/01/2021;
 27/01/2021;masculino;40;;público;diabetes;24/01/2021;
 27/01/2021;feminino;60;;privado;;25/01/2021;
@@ -202,7 +202,7 @@
 09/02/2021;masculino;65;;público;hipertensão e diabetes;08/02/2021;
 09/02/2021;masculino;89;;privado;hipertensão;08/02/2021;
 10/02/2021;masculino;68;31/01/2021;privado;diabetes e doença imunossupressora e hipertensão e doença hepática;09/02/2021;
-10/02/2021;masculino;49;17/01/2021;público;obesidade;02/01/2021;
+10/02/2021;masculino;49;17/01/2021;público;obesidade;02/02/2021;
 11/02/2021;masculino;58;;público;diabetes e cardiopatia e doença renal crônica;06/02/2021;
 11/02/2021;masculino;30;;público;;08/02/2021;
 11/02/2021;feminino;77;;público;cardiopatia;09/02/2021;
@@ -431,9 +431,9 @@
 06/04/2021;feminino;53;18/03/2021;privado;hipertensão e obesidade;04/04/2021;
 06/04/2021;masculino;79;01/04/2021;privado;pneumopatia crônica ;04/04/2021;
 06/04/2021;masculino;54;09/03/2021;privado;;04/04/2021;
-06/04/2021;feminino;51;20/03/2021;público;diabetes e hipertensão;05/03/2021;
-06/04/2021;masculino;76;18/03/2021;privado;diabetes e hipertensão;05/03/2021;
-06/04/2021;feminino;55;15/03/2021;privado;diabetes;05/03/2021;
+06/04/2021;feminino;51;20/02/2021;público;diabetes e hipertensão;05/03/2021;
+06/04/2021;masculino;76;18/02/2021;privado;diabetes e hipertensão;05/03/2021;
+06/04/2021;feminino;55;15/02/2021;privado;diabetes;05/03/2021;
 07/04/2021;feminino;75;09/03/2021;público;cardiopatia e diabetes e hipotiroidismo;24/03/2021;
 07/04/2021;feminino;71;19/03/2021;privado;;03/04/2021;
 07/04/2021;masculino;77;15/03/2021;público;diabetes;04/04/2021;
@@ -706,9 +706,9 @@
 07/06/2021;feminino;72;04/05/2021;público;obesidade e asma;04/06/2021;
 07/06/2021;masculino;80;10/05/2021;público;cardiopatia e pneumopatia crônica ;05/06/2021;
 07/06/2021;feminino;72;10/05/2021;público;hipertensão e obesidade e pneumopatia crônica;05/06/2021;
-07/06/2021;feminino;68;21/05/2021;privado;diabetes e hipertensão e AVC;06/06//2021;
-07/06/2021;feminino;53;09/05/2021;público;;06/06//2021;
-07/06/2021;feminino;64;20/05/2021;público;;06/06//2021;
+07/06/2021;feminino;68;21/05/2021;privado;diabetes e hipertensão e AVC;06/06/2021;
+07/06/2021;feminino;53;09/05/2021;público;;06/06/2021;
+07/06/2021;feminino;64;20/05/2021;público;;06/06/2021;
 07/06/2021;feminino;66;20/05/2021;público;diabetes e hipertensão;07/06/2021;
 08/06/2021;masculino;55;10/05/2021;público;diabetes;29/05/2021;
 08/06/2021;masculino;90;25/05/2021;público;;29/05/2021;
@@ -733,7 +733,7 @@
 10/06/2021;masculino;48;21/05/2021;público;asma;02/06/2021;
 10/06/2021;feminino;74;21/05/2021;privado;cardiopatia e hipertensão e hipotireoidismo;02/06/2021;
 10/06/2021;masculino;59;12/05/2021;privado;obesidade;04/06/2021;
-10/06/2021;masculino;55;20/05/2021;privado;obesidade;;
+10/06/2021;masculino;55;20/05/2021;privado;obesidade;04/06/2021;
 10/06/2021;masculino;64;22/05/2021;público;diabetes;08/06/2021;
 10/06/2021;masculino;48;20/05/2021;público;hipertensão;09/06/2021;
 10/06/2021;masculino;59;11/05/2021;público;hipertensão e diabetes e obesidade;09/06/2021;
@@ -991,7 +991,7 @@
 11/09/2021;masculino;71;;público;câncer;03/08/2021;
 11/09/2021;feminino;71;;privado;hipertensão;06/08/2021;
 14/09/2021;feminino;50;01/06/2021;público;asma;30/06/2021;
-14/09/2021;masculino;57;17/06/2021;público;cardiopatia;17/06//2021;
+14/09/2021;masculino;57;17/06/2021;público;cardiopatia;17/06/2021;
 20/09/2021;feminino;48;02/08/2021;público;;19/09/2021;
 20/09/2021;feminino;85;12/08/2021;público;;10/09/2021;
 21/09/2021;masculino;79;;privado;cardiopatia e doença renal crônica;21/09/2021;
@@ -1120,7 +1120,7 @@
 17/02/2022;masculino;86;29/01/2022;privado;diabetes e doença renal crônica;17/02/2022;3
 21/02/2022;masculino;86;14/02/2022;público;doença cardiovascular crônica;18/02/2022;3
 21/02/2022;feminino;60;01/02/2022;público;doença cardiovascular crônica;18/02/2022;2
-22/02/2022;feminino;39;21/02/2022;público;obesidade;18/02/2022;0
+22/02/2022;feminino;39;21/01/2022;público;obesidade;18/02/2022;0
 22/02/2022;masculino;79;25/01/2022;privado;doença cardiovascular crônica e pneumopatica crônica;21/02/2022;0
 23/02/2022;masculino;88;31/01/2022;privado;diabetes e doença cardiovascular crônica e doença neurológica crônica;22/02/2022;3
 24/02/2022;masculino;87;22/01/2022;público;doença cardiovascular crônica;11/02/2022;3
@@ -1134,3 +1134,10 @@
 04/03/2022;feminino;85;01/02/2022;público;hipertensão e pneumopatia crônica;27/02/2022;3
 04/03/2022;masculino;60;09/02/2022;público;doença cardiovascular crônica;04/03/2022;2
 04/03/2022;masculino;82;16/02/2022;público;diabetes;04/03/2022;2
+08/03/2022;feminino;83;20/02/2022;privado;doença renal crônica;05/03/2022;3
+08/03/2022;masculino;87;23/02/2022;público;diabetes e doença cardiovascular crônica;06/03/2022;2
+09/03/2022;feminino;32;25/02/2022;público;;04/03/2022;2
+09/03/2022;feminino;89;09/02/2022;privado;doença cardiovascular crônica;09/03/2022;3
+10/03/2022;feminino;83;21/02/2022;público;diabetes e doença renal crônica e doença cardiovascular crônica e obesidade;10/03/2022;3
+11/03/2022;feminino;93;14/02/2022;público;doença cardiovascular crônica;10/03/2022;2
+11/03/2022;feminino;67;22/02/2022;privado;doença cardiovascular crônica e doença renal crônica e pneumopatia crônica;11/03/2022;0
