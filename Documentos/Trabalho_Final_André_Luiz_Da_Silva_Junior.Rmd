@@ -3,9 +3,10 @@ title: "Trabalho_Final_Andre_luiz_Da_Silva_Junior"
 author: "Andre luiz Da Silva Junior"
 date: "13/03/2022"
 output:
-  word_document: default
+  pdf_document: default
   html_document:
     df_print: paged
+  word_document: default
 ---
 ## Considerações Iniciais.
 Nesse trabalho foi realizado uma Análise Exploratória dos Dados analisando os dados fornecidos pela Prefeitura sobre a pandemia de Covid-19 na cidade de Bauru.
