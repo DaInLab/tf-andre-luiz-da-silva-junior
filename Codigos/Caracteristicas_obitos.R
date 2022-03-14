@@ -1,5 +1,6 @@
 library(ggplot2)
-library(tidyverse)
+library(readxl)
+
 datas = read_excel("./Dados/covid_19_bauru_casos_geral.xlsx")
 morte = read_excel("./Dados/covid_19_bauru_mortes.xlsx")
 com = c(morte$comorbidade[complete.cases(morte$comorbidade)])
@@ -10,10 +11,10 @@ com1 = unlist(uniq)
 data1 = as.matrix(datas[,-1])
 data1[is.na(data1)] <- 0
 
-cormat <- round(cor(data1),2)
+cormat <- signif(cor(data1),2)
 head(cormat)
-
-heatmap(cormat,cexCol =0.5, cexRow = 0.5,margins = c(7,7))
+col<- colorRampPalette(c("blue", "white", "red"))(20)
+heatmap(cormat,col =col, cexCol =0.5, cexRow = 0.5,margins = c(7,7),symm = TRUE)
 
 
 tab1 <- as.data.frame(table(com1))
@@ -27,3 +28,4 @@ ggplot(tab1,aes(x=com1,y=Freq,fill=com1),) +
   geom_bar(stat="identity", position="stack") +
   theme(axis.text.x = element_blank()) +
   geom_col(width=0.3)  
+

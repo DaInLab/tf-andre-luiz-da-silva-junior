@@ -1,0 +1,280 @@
+---
+title: "Trabalho_Final_Andre_luiz_Da_Silva_Junior"
+author: "Andre luiz Da Silva Junior"
+date: "13/03/2022"
+output:
+  word_document: default
+  html_document:
+    df_print: paged
+---
+## Considerações Iniciais.
+Nesse trabalho foi realizado uma Análise Exploratória dos Dados analisando os dados fornecidos pela Prefeitura sobre a pandemia de Covid-19 na cidade de Bauru.
+
+
+O trabalho tem a intenção de abordar os seguintes tópicos:
+
+- Distribuição de acordo com a idade dos pacientes.
+
+- Verificar quais as características das comorbidades dos óbitos.
+
+- Variação periódica de tais óbitos.
+
+- Tipos e tempo de permanência hospitalar.
+
+- Relação entre óbitos ocorridos e a vacinação dos falecidos.
+
+A intenção com a Análise é torna de facil entendimento o que aconteu durante a pandemia e poder extrair as informações de forma facilmente enxergaveis através de gráficos.
+
+```{r ler-arquivos, echo=FALSE}
+
+if (!require(tidyverse)) {
+  install.packages("tidyverse")
+  library(tidyverse)
+}
+
+if (!require(readxl)) {
+  install.packages("readxl")
+  library(readxl)
+}
+
+
+```
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+\newpage
+## Distribuição de acordo com a idade dos pacientes.
+
+No gráfico a seguir vemos a distribuição das idades dos pacientes que vieram à óbito na cidade de bauru durante a pnademia.
+
+```{r Distribuicao_idades , echo = FALSE,warning = FALSE, error=FALSE}
+library(ggplot2)
+library(readxl)
+
+Idades = read_excel("../Dados/covid_19_bauru_mortes.xlsx")
+x = Idades$`idade`
+
+hist(x, main = "Distribuição das Idades", xlab = "Idades",ylab = "Quantidades", col = "Red", breaks = 20)
+```
+
+Pelo gráfico percebemos que idades mais avançadas tendêm a sofrer mais óbitos em decorrencia da COVID-19 do que pessoas mais jovens.
+
+\newpage
+## Verificar quais as características das comorbidades dos óbitos.
+
+Primeiramente, verificando as caracteristicas das pessoas que acabaram vindo a obito será apresentado no próximo gráfico.
+
+```{r Caracteristicas_obito1 , echo = FALSE,warning = FALSE, error=FALSE}
+
+library(ggplot2)
+library(readxl)
+
+morte = read_excel("../Dados/covid_19_bauru_mortes.xlsx")
+
+com = c(morte$comorbidade[complete.cases(morte$comorbidade)])
+uniq <- strsplit(com," e ")
+com1 = unlist(uniq)
+
+tab1 <- as.data.frame(table(com1))
+tab1 <- tab1[with(tab1,order(-Freq)),]
+tab1 <- tab1[1:10,]
+
+ggplot(tab1,aes(x=com1,y=Freq,fill=com1),) +
+  labs(x = "Comorbidade", y = "Óbitos", fill="Comorbidades") +
+  ggtitle("Óbitos X Comorbidades") +
+  geom_text(aes(label=Freq), vjust = -0.3) +
+  geom_bar(stat="identity", position="stack") +
+  theme(axis.text.x = element_blank()) +
+  geom_col(width=0.3)
+
+```
+
+Dá para notar que há doenças que se correlacionam com a COVID-19 como diabetes, hipertensão, cardiopatia e obesidade, já que seus números são elevados em pacientes que vieram á óbito.
+
+\newpage
+## Variação periódica de tais óbitos.
+
+A variação periódica serve para termos uma ideia de quanto o número de obitos subiu ao decorrer do tempo, podemos ver no gráfico o quanto a vacina ajudou a frear um tanto as mortes e como a omicron aliada às festas de final de ano ajudaram a voltar a subir.
+
+```{r Variacao_Periodica , echo = FALSE,warning = FALSE, error=FALSE}
+
+library(ggplot2)
+library(readxl)
+datas = read_excel("../Dados/covid_19_bauru_casos_geral.xlsx")
+
+morte = datas$`total_mortes`[!is.na(datas$total_mortes)]
+data1 = as.Date(datas$`data_boletim`)[!is.na(datas$total_mortes)]
+
+df<- data.frame(morte,data1)
+
+ggplot(datas[!is.na(datas$total_mortes), ], aes(x= morte, y = data1)) +
+  geom_point(size=2, col="steelblue") + 
+  theme_bw() +
+  labs(x="Número de óbitos", y="Datas")
+
+
+
+```
+
+Esse gráfico é muito importante já que ajuda governos a saber quando uma pandemia está aliviando e pode liberar gradualmente as restrições da população diante a COVID-19.
+
+\newpage
+## Tipos e tempo de permanência hospitalar.
+
+Nos gráficos a seguir veremos algumas caracteristicas que podem estar associadas ao número de óbitos.
+
+Nesse primeiro graficos temos o número da distribuição entre hospitais públicos e hospitais privados.
+
+```{r Tipos_Hospitalizacao1 , echo = FALSE,warning = FALSE, error=FALSE}
+
+library(ggplot2)
+library(readxl)
+Tipos = read_excel("../Dados/covid_19_bauru_mortes.xlsx")
+x = Tipos$`tipo_hosp`
+pub = table(x)
+
+
+#Tipos por publico e privado
+ggplot(as.data.frame(pub),aes(x=x,y=Freq,fill=x),) +
+  labs(x = "Tipos", y = "Frequência", fill="Tipos") +
+  ggtitle("Distribuicao de Óbitos Entre Hospitals Públicos e Privados") +
+  geom_text(aes(label=Freq), vjust = -0.3) +
+  geom_bar(stat="identity", position="stack") +
+  geom_col(width=0.3)
+
+```
+
+Podemos tirar disso que hospitais privados podem ter mais condições que os públicos de atender pacientes com COVID-19 e salva-los.
+
+No próximo, vemos o número de óbitos de acordo com o sexo do paciente.
+
+```{r Tipos_Hospitalizacao2 , echo = FALSE,warning = FALSE, error=FALSE}
+
+library(ggplot2)
+library(readxl)
+Tipos = read_excel("../Dados/covid_19_bauru_mortes.xlsx")
+
+y = Tipos$`sexo`
+
+sex = table(y)
+
+
+#Tipos por sexo
+ggplot(as.data.frame(sex),aes(x=y,y=Freq,fill=y),) +
+  labs(x = "Tipos", y = "Frequência", fill="Tipos") +
+  ggtitle("Óbitos por Sexo") +
+  geom_text(aes(label=Freq), vjust = -0.3) +
+  geom_bar(stat="identity", position="stack") +
+  geom_col(width=0.3)
+
+```
+
+Tiramos que mais Homens morrem do que mulheres, isso pode ser associado à uma maior letalidade do COVID-19 em homens, ou até mesmo uma maior expoção dos homens ao virus.
+
+E nesse último gráficos veremos o número de óbitos de acordo com o número de dias internados.
+
+```{r Tipos_Hospitalizacao3 , echo = FALSE,warning = FALSE, error=FALSE}
+
+library(ggplot2)
+library(readxl)
+Tipos = read_excel("../Dados/covid_19_bauru_mortes.xlsx")
+
+z1 = as.Date(Tipos$`data_obito`)
+z2 = as.Date(Tipos$`inicio_sintoma`)
+z3 = difftime(z1, z2, units = "days")
+days1 = table(z3)
+
+
+#Relação obito dias internados
+ggplot(as.data.frame(days1),aes(x=z3,y=Freq,fill=z3),) +
+  labs(x = "Dias Internados", y = "Mortes", fill="Dias") +
+  ggtitle("Óbitos pela Quantidade de Dias Hospitalizado") +
+  geom_bar(stat="identity", position="stack") +
+  geom_col(width=0.3)+
+  scale_x_discrete(guide = guide_axis(check.overlap = TRUE))+
+  theme(legend.position="none")
+
+
+
+
+```
+
+A maioria dos internados ficam menos de um mês internados porém ficando alguns dias antes de morrer, por isso há uma superlotação de usúarios em tempos de maior contágio, já que não só os que morrem ficam em leitos antes de vir à óbito, como os que acabam se curando.
+
+\newpage
+## Relação entre óbitos ocorridos e a vacinação dos falecidos.
+
+Nessa secção veremos a relação entre doses de vacina e o número de óbitos.
+
+```{r Obitos_Vacinacao1 , echo = FALSE,warning = FALSE, error=FALSE}
+
+library(ggplot2)
+library(readxl)
+
+Tipos = read_excel("../Dados/covid_19_bauru_mortes.xlsx", guess_max = 1005)
+x = Tipos$`doses_vacina`
+x[is.na(x)] <- 0
+tab = table(x)
+
+
+ggplot(as.data.frame(tab),aes(x=x,y=Freq,fill=x),) +
+  labs(x = "Número de Doses", y = "Frequência", fill="Número de doses") +
+  ggtitle("Óbitos por quantidades de vacina") +
+  geom_text(aes(label=Freq), vjust = -0.3) +
+  geom_bar(stat="identity", position="stack") +
+  geom_col(width=0.3)
+
+
+
+
+```
+
+Podemos ver que há uma menor incidência de mortes em pessoas que aplicaram a vacina, porém tem que relevar que demorou para desenvolver essas vacinas, e também que após a primeira dose logo se tomaram as próximas, ou seja, uma dose não tem mais eficacia que tomar mais doses.
+
+```{r Obitos_Vacinacao2 , echo = FALSE,warning = FALSE, error=FALSE}
+
+library(ggplot2)
+library(readxl)
+
+Tipos = read_excel("../Dados/covid_19_bauru_mortes.xlsx", guess_max = 1005)
+x = Tipos$`doses_vacina`
+x[is.na(x)] <- 0
+y= as.Date(Tipos$data_obito)
+
+
+ggplot(Tipos,aes(x=y,y=x)) +
+  geom_point(size=2, col="steelblue") + 
+  theme_bw() +
+  labs(x="Número de óbitos", y="Doses")
+
+
+
+
+
+```
+
+Esse gráfico serve pra demonstrar que a maioria dos óbitos aconteceram em época que não existia vacina, e que os que haviam tomado uma dose já podiam ter tomado mais doses.
+
+\newpage
+## Bonus: Relação Entre Dados de Hospitalização.
+Como um bônus, foi feito um mapa de calor correlacionando as características mais ligadas umas às outras.
+
+```{r Caracteristicas_obito , echo = FALSE,warning = FALSE, error=FALSE}
+
+library(ggplot2)
+library(readxl)
+
+datas = read_excel("../Dados/covid_19_bauru_casos_geral.xlsx")
+
+data1 = as.matrix(datas[,-1])
+data1[is.na(data1)] <- 0
+
+cormat <- signif(cor(data1),2)
+
+col<- colorRampPalette(c("blue", "white", "red"))(20)
+heatmap(cormat,col =col, cexCol =0.5, cexRow = 0.5,margins = c(7,7),symm = TRUE)
+```
+
+Conseguimos ver que alguns dados tem mais relações com uns que outros como por exemplo notificações com negativos, o que faz sentido já que pra saber que foi negativado tem que ter sido notificado.

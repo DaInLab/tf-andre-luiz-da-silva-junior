@@ -1,3 +1,5 @@
+library(ggplot2)
+library(readxl)
 Tipos = read_excel("./Dados/covid_19_bauru_mortes.xlsx")
 x = Tipos$`tipo_hosp`
 y = Tipos$`sexo`
@@ -11,7 +13,7 @@ sex = table(y)
 #Tipos por publico e privado
 ggplot(as.data.frame(pub),aes(x=x,y=Freq,fill=x),) +
   labs(x = "Tipos", y = "Frequência", fill="Tipos") +
-  ggtitle("Tipos de Hospitalização por Tipo de Hospital") +
+  ggtitle("Distribuicao de Óbitos Entre Hospitals Públicos e Privados") +
   geom_text(aes(label=Freq), vjust = -0.3) +
   geom_bar(stat="identity", position="stack") +
   geom_col(width=0.3)
@@ -19,7 +21,7 @@ ggplot(as.data.frame(pub),aes(x=x,y=Freq,fill=x),) +
 #Tipos por sexo
 ggplot(as.data.frame(sex),aes(x=y,y=Freq,fill=y),) +
   labs(x = "Tipos", y = "Frequência", fill="Tipos") +
-  ggtitle("Tipos de Hospitalização por Sexo") +
+  ggtitle("Óbitos por Sexo") +
   geom_text(aes(label=Freq), vjust = -0.3) +
   geom_bar(stat="identity", position="stack") +
   geom_col(width=0.3)

@@ -1,3 +1,6 @@
+library(ggplot2)
+library(readxl)
+
 Tipos = read_excel("./Dados/covid_19_bauru_mortes.xlsx", guess_max = 1005)
 x = Tipos$`doses_vacina`
 x[is.na(x)] <- 0
@@ -15,4 +18,3 @@ ggplot(Tipos,aes(x=y,y=x)) +
   geom_point(size=2, col="steelblue") + 
   theme_bw() +
   labs(x="Número de óbitos", y="Doses")
-
